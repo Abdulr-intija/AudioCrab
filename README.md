@@ -1,5 +1,6 @@
 # AudioCrab
 AudioCrab gives a concert-like surround feeling to any music in a non-trivial way.
+
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 ## Dependencies
