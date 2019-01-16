@@ -1,5 +1,6 @@
 # AudioCrab
-AudioCrab gives a concert-like surround feeling to any music in a non-trivial way
+AudioCrab gives a concert-like surround feeling to any music in a non-trivial way.
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 ## Dependencies
 These packages must be installed for AudioCrab to work as expected
@@ -10,7 +11,7 @@ These packages must be installed for AudioCrab to work as expected
 
 
 ## How to use
-For now, simply run the `AudioCrab.py` file 
+For now, simply run the `AudioCrab.py` file located in `crab` directory
 
 ### Sample
 
