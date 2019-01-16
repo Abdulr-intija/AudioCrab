@@ -5,11 +5,16 @@
     RIGHT DATA, means sample data on the right speaker
 '''
 
+#int.
+import os
+import subprocess
+import time
+import random
+
+#ext.
 import numpy as np
 from scipy.io import wavfile
-import random
-import time
-import subprocess
+
 
 class WavProcessor:
 
@@ -27,13 +32,14 @@ class WavProcessor:
 
         sinePad = self.generateSinePadding(waveLength, self.generatePattern())
 
-        print("Compounding sound travels...\n")
+        print("Still on the work...\n")
         self.reverb()
 
         print("Constraining samples and Finalizing...\n")
         finalSampleData = self.injectSinePad(sinePad)
-        
 
+        
+        #--------- Portion below in this fucntion will be moved to WavRebox.py soon -----------
         #save
         print("Saving...\n")
         wavfile.write(self.absoluteAudioPath + '.wav', sampleFrequency, np.array(finalSampleData))
@@ -43,6 +49,13 @@ class WavProcessor:
 
 
         print("Time spent: ", time.time() - t, " secs")
+
+        #remove tmp files
+        if os.path.exists(self.absoluteAudioPath + '.wav'):
+            os.remove(self.absoluteAudioPath + '.wav')
+        
+        if os.path.exists(self.absoluteAudioPath):
+            os.remove(self.absoluteAudioPath)
 
 
     def generateSinePadding(self, waveLength, pattern):
@@ -56,23 +69,23 @@ class WavProcessor:
             speedup = sineCount > 2
 
             if speedup:
-                sw = int(waveLength/5)
+                spedWavelength = int(waveLength * 0.2)
             else:
-                sw = waveLength
+                spedWavelength = waveLength
 
-            for index in range(generatorBreak, generatorBreak + sw, steps):
+            for index in range(generatorBreak, generatorBreak + spedWavelength, steps):
                 
                 wave = self.sine(index, index + steps, waveFrequency)
                 result += wave
 
             if speedup:
-                steps = int(waveLength/2)
-                for index in range(generatorBreak + sw, generatorBreak + (sw * 5), steps):
+                steps = int(waveLength * 0.5)
+                for index in range(generatorBreak + spedWavelength, generatorBreak + (spedWavelength * 5), steps):
                 
                     wave = self.sine(index, index + steps, waveFrequency)
                     result += wave
         
-            generatorBreak += (sw * 5)
+            generatorBreak += (spedWavelength * 5)
         
         return result
 
@@ -102,7 +115,7 @@ class WavProcessor:
 
     def reverb(self):
         oldLeftData = self.leftData
-        reverbLeakPool = [0 for i in range(2200)]
+        reverbLeakPool = [0 for i in range(2300)]
 
         self.leftData = np.concatenate([self.leftData, np.array(reverbLeakPool)])
 
@@ -115,10 +128,10 @@ class WavProcessor:
         for index, sample in enumerate(oldLeftData):
             scaledDownSample = int(sample) * 0.5
             self.leftData[index + 1650] = (self.leftData[index + 1650] * 0.5) + scaledDownSample
-            self.leftData[index + 2200] = (self.leftData[index + 2200] * 0.5) + scaledDownSample
+            self.leftData[index + 2300] = (self.leftData[index + 2300] * 0.5) + scaledDownSample
 
             self.rightData[index + 975] = (self.rightData[index + 975] * 0.5) + scaledDownSample
-            self.rightData[index + 1100] = (self.rightData[index + 1100] * 0.5) + scaledDownSample
+            self.rightData[index + 1300] = (self.rightData[index + 1300] * 0.5) + scaledDownSample
 
     def injectSinePad(self, sinePad):
 
@@ -136,6 +149,6 @@ class WavProcessor:
             left *= (tracePoint + 20)
             right *= (tracePoint - 20)
         
-            resultData.append([(np.int32)(left/22), (np.int32)(right/22)])
+            resultData.append([(np.int32)(left * 0.046), (np.int32)(right * 0.046)])
 
         return resultData
