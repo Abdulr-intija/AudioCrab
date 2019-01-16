@@ -12,10 +12,10 @@ These packages must be installed for AudioCrab to work as expected
 
 
 ## How to use
-For now, simply run the `AudioCrab.py` file located in `crab` directory
+For now, simply run the `AudioCrab.py` script located in `crab` directory.
 
 ### Sample
 
 |   Before Conversion   |   After Conversion  |
 ----------------------- | --------------------
-|   [GOT.mp3](https://raw.githubusercontent.com/Abdulr-intija/AudioCrab/master/sample/G%20O%20T.mp3)   |   [GOT surround.mp3](https://raw.githubusercontent.com/Abdulr-intija/AudioCrab/master/sample/G%20O%20T%20-%20converted.mp3)   |
+|   [GOT.mp3](https://raw.githubusercontent.com/Abdulr-intija/AudioCrab/master/sample/G%20O%20T.mp3)   |   [GOT surround.mp3](https://raw.githubusercontent.com/Abdulr-intija/AudioCrab/master/sample/G%20O%20T%20-%203D%20converted.mp3)   |
