@@ -13,6 +13,7 @@ These packages must be installed for AudioCrab to work as expected
 For now, simply run the `AudioCrab.py` file 
 
 ## Some samples
+
 |   Before Conversion   |   After Conversion  |
-------------------------------------------------
+----------------------- | --------------------
 |   https://raw.githubusercontent.com/Abdulr-intija/AudioCrab/master/sample/G%20O%20T.flac   |   https://raw.githubusercontent.com/Abdulr-intija/AudioCrab/master/sample/G%20O%20T.flac   |
